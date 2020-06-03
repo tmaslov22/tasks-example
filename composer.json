@@ -1,0 +1,14 @@
+{
+    "require": {
+        "illuminate/database": "^7.14",
+        "illuminate/pagination": "^7.14",
+        "illuminate/routing": "^7.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controller\\": "controller/",
+            "Model\\": "model/",
+            "Core\\": "core/"
+        }
+    }
+}
