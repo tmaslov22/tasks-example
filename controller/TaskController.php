@@ -27,10 +27,14 @@ class TaskController extends BaseController
     {
         $this->checkAuth();
         $task = Task::findOrFail($id);
+        $admin_edited = false;
+        if($task->description != $request->post('description')) {
+            $admin_edited = true;
+        }
         $task->update([
             'description' => $request->post('description'),
             'completed' => $request->boolean('completed'),
-            'admin_edited' => true
+            'admin_edited' => $admin_edited
         ]);
 
         Helper::redirectBack();
