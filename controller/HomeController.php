@@ -35,14 +35,14 @@ class HomeController extends BaseController
 
     function auth(Request $request)
     {
+        $url = 'http://'.$_SERVER['HTTP_HOST'];
+        header( "Refresh:1; url=$url", true, 303);
         if($request->post('login') == 'admin' && $request->post('password') == '123') {
             $_SESSION['is_admin'] = true;
             echo 'Вы успешно вошли! Ожидайте перезагрузку..';
         } else {
             echo 'Ошибка логина или пароля... Ожидайте перезагрузку..';
         }
-        $url = 'http://'.$_SERVER['HTTP_HOST'];
-        header( "Refresh:1; url=$url", true, 303);
         exit();
     }
 
@@ -71,6 +71,6 @@ class HomeController extends BaseController
         $_SESSION['order_by'] = $by;
 
 
-        Helper::redirectBack();
+        Helper::redirectBack(0);
     }
 }

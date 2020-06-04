@@ -17,9 +17,9 @@ class TaskController extends BaseController
         $task->description = $request->get('description');
 
         $task->save();
-        echo 'Вы добавили новый таск! Ожидайте загрузки..';
         $url = $_SERVER['HTTP_REFERER'];
         header( "Refresh:1; url=$url", true, 303);
+        echo 'Вы добавили новый таск! Ожидайте загрузки..';
         exit();
     }
 
@@ -29,10 +29,12 @@ class TaskController extends BaseController
         $task = Task::findOrFail($id);
         $task->update([
             'description' => $request->post('description'),
-            'completed' => $request->boolean('completed')
+            'completed' => $request->boolean('completed'),
+            'admin_edited' => true
         ]);
-        echo 'Вы изменили таск';
+
         Helper::redirectBack();
+        echo 'Вы изменили таск';
     }
 
     function editForm($id)

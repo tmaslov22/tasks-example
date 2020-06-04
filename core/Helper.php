@@ -13,10 +13,8 @@ class Helper
         exit();
     }
 
-    public static function redirectBack()
+    public static function redirectBack($seconds = 1)
     {
-        header('HTTP/1.1 200 OK');
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit();
+        header( "Refresh:$seconds; url=".$_SERVER['HTTP_REFERER'], true, 303);
     }
 }

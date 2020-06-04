@@ -42,6 +42,7 @@
             <h5 class="card-title"><?=$task->name?></h5>
             <p class="card-text">Автор: <?=$task->user_name?></p>
             <p class="card-text" data-task-completed="false">Выполнил: <?= $task->completed ?'да':'нет'?></p>
+            <? if($task->admin_edited) { ?><p class="card-text">Редакция админа: да</p><? } ?>
             <p class="card-text">Email: <?=$task->email?></p>
             <p class="card-text" data-task-description=""><?=$task->descriptionPrint?></p>
             <?php if ($isAdmin) { ?>
